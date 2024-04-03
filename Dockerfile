@@ -1,6 +1,6 @@
 FROM oven/bun:distroless@sha256:7d3a4d979da0b40ddfad6bb23b044006d96a39fd9b256c990f54d26c7e8644f7 as bun
 
-FROM summerwind/actions-runner@sha256:0358dc81feccc522fd94f7c86dd8733499320159f880671e8fcc9362d7b90349 as default-actions-runner
+FROM summerwind/actions-runner@sha256:700312f93394aae09b8c01cf32dbcb3b81bdd5d0c5ac684416c388abfe0e7475 as default-actions-runner
 
 FROM denoland/deno:bin@sha256:7da859b3e0bca7229bd5baef44c11ec6ba32caa4af2aba5dd3945d9297009cd2 AS deno
 
