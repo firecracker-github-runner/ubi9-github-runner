@@ -1,4 +1,4 @@
-FROM oven/bun:distroless@sha256:7d3a4d979da0b40ddfad6bb23b044006d96a39fd9b256c990f54d26c7e8644f7 as bun
+FROM oven/bun:distroless@sha256:6cf857056b03a4eecd8cf62d67296e1da50bbb205c824d7b888202f66fd690ce as bun
 
 FROM summerwind/actions-runner@sha256:700312f93394aae09b8c01cf32dbcb3b81bdd5d0c5ac684416c388abfe0e7475 as default-actions-runner
 
