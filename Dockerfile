@@ -2,7 +2,7 @@ FROM oven/bun:distroless@sha256:3cc457ea32e90b9c87b1d134e89c072a986ee3adaed7063d
 
 FROM summerwind/actions-runner@sha256:700312f93394aae09b8c01cf32dbcb3b81bdd5d0c5ac684416c388abfe0e7475 as default-actions-runner
 
-FROM denoland/deno:bin@sha256:7da859b3e0bca7229bd5baef44c11ec6ba32caa4af2aba5dd3945d9297009cd2 AS deno
+FROM denoland/deno:bin@sha256:b494c3d4272918010f16e6cb66a5e524967695e92e498b0b4c439adba994d64d AS deno
 
 FROM registry.access.redhat.com/ubi9/ubi@sha256:66233eebd72bb5baa25190d4f55e1dc3fff3a9b77186c1f91a0abdb274452072
 
