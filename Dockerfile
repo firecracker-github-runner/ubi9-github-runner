@@ -20,8 +20,8 @@ RUN cd ${WORKDIR} && \
     ./fetch-externals.sh
 
 FROM registry.access.redhat.com/ubi9/ubi@sha256:66233eebd72bb5baa25190d4f55e1dc3fff3a9b77186c1f91a0abdb274452072
-
 # see: https://github.com/actions/runner/blob/main/images/Dockerfile
+
 ENV RUNNER_MANUALLY_TRAP_SIG=1
 ENV ACTIONS_RUNNER_PRINT_LOG_TO_STDOUT=1
 
@@ -32,6 +32,7 @@ ENV USERNAME="runner"
 
 # Add deps from docker images
 COPY --from=bun     --chown=root:0 /usr/local/bin/bun ${BIN_DIR}/bun
+COPY --from=bun     --chown=root:0 /usr/local/bin/bunx ${BIN_DIR}/bunx
 COPY --from=deno    --chown=root:0 /deno ${BIN_DIR}/deno
 COPY --from=builder --chown=root:0 /work/ko/ko ${BIN_DIR}/ko
 
