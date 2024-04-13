@@ -1,5 +1,6 @@
 FROM oven/bun:distroless@sha256:3cc457ea32e90b9c87b1d134e89c072a986ee3adaed7063d35fef2fce90cc4a7 as bun
 FROM denoland/deno:bin@sha256:18d72c43e4b91c81e824e368e8eb15c67b481e669c5151dc3902cf113c87c4b7 AS deno
+from golang:latest@sha256:450e3822c7a135e1463cd83e51c8e2eb03b86a02113c89424e6f0f8344bb4168 as golang
 
 FROM ghcr.io/actions/actions-runner:latest@sha256:45f609ab5bd691735dbb25e3636db2f5142fcd8f17de635424f2e7cbd3e16bc9 as base
 
@@ -31,15 +32,19 @@ ENV GID=0
 ENV USERNAME="runner"
 
 # Add deps from docker images
-COPY --from=bun     --chown=root:0 /usr/local/bin/bun ${BIN_DIR}/bun
-COPY --from=bun     --chown=root:0 /usr/local/bin/bunx ${BIN_DIR}/bunx
-COPY --from=deno    --chown=root:0 /deno ${BIN_DIR}/deno
-COPY --from=builder --chown=root:0 /work/ko/ko ${BIN_DIR}/ko
+COPY --from=bun     --chown=root:0 /usr/local/bin/bun ${BIN_DIR}/
+COPY --from=bun     --chown=root:0 /usr/local/bin/bunx ${BIN_DIR}/
+COPY --from=deno    --chown=root:0 /deno ${BIN_DIR}/
+COPY --from=golang  --chown=root:0 /usr/local/go /usr/local/
+COPY --from=builder --chown=root:0 /work/ko/ko ${BIN_DIR}/
+
+# Add golang to PATH
+ENV PATH=/usr/local/go:${PATH}
 
 # Adapted from https://github.com/bbrowning/github-runner/blob/master/Dockerfile
 RUN dnf -y upgrade --security && \
     dnf -y --setopt=skip_missing_names_on_install=False install \
-    git git-lfs golang jq unzip wget zstd && \
+    git git-lfs jq unzip wget zstd && \
     dnf -y --setopt=skip_missing_names_on_install=False module install nodejs:20/common && \
     dnf clean all
 
@@ -51,7 +56,8 @@ COPY --from=base --chown=${UID}:${GID} /home/runner /home/${USERNAME}_base
 
 # Install runner deps
 WORKDIR /home/${USERNAME}_base
-RUN /home/${USERNAME}_base/bin/installdependencies.sh
+RUN /home/${USERNAME}_base/bin/installdependencies.sh && \
+    dnf clean all
 
 # Inject sudo shim
 COPY --chown=root:root ./sudoShim.sh ${BIN_DIR}/sudo
