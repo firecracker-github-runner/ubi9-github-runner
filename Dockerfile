@@ -38,7 +38,7 @@ COPY --from=builder --chown=root:0 /work/ko/ko ${BIN_DIR}/ko
 # Adapted from https://github.com/bbrowning/github-runner/blob/master/Dockerfile
 RUN dnf -y upgrade --security && \
     dnf -y --setopt=skip_missing_names_on_install=False install \
-    git git-lfs jq unzip wget zstd && \
+    git git-lfs golang jq unzip wget zstd && \
     dnf -y --setopt=skip_missing_names_on_install=False module install nodejs:20/common && \
     dnf clean all
 
