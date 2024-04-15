@@ -42,8 +42,8 @@ ENV BASE_DIR=/home/${USERNAME}_base
 COPY --from=golang  --chown=root:0 /usr/local/go /usr/local/
 COPY --from=builder --chown=root:0 /work/bin/* ${BIN_DIR}/
 
-# Add golang to PATH
-ENV PATH=/usr/local/go:${PATH}
+# Add golang + builtin node to PATH
+ENV PATH=/usr/local/go:${BASE_DIR}/externals/node20/bin:${PATH}
 
 # Setup runner
 COPY --from=base --chown=root:0 /home/runner ${BASE_DIR}
