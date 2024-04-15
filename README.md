@@ -6,6 +6,7 @@ Includes:
 - Bun
 - Deno
 - Go
+- Ko
 - Node (using node 20 from runner externals)
 
 Expects:
