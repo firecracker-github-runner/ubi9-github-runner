@@ -3,5 +3,6 @@
     "extends": [
       "config:best-practices",
       "default:automergeDigest"
-    ]
+    ],
+    "autoApprove": true
   }
