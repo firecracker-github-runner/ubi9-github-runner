@@ -28,6 +28,7 @@ RUN cd ${WORKDIR} && \
 FROM ubuntu:jammy@sha256:77906da86b60585ce12215807090eb327e7386c8fafb5402369e421f44eff17e
 # see: https://github.com/actions/runner/blob/main/images/Dockerfile
 
+ENV DEBIAN_FRONTEND=noninteractive
 ENV RUNNER_MANUALLY_TRAP_SIG=1
 ENV ACTIONS_RUNNER_PRINT_LOG_TO_STDOUT=1
 
@@ -54,9 +55,10 @@ RUN useradd -m $USERNAME -u $UID && \
     apt-get install -y --no-install-recommends \
     ca-certificates \
     curl \
-    jq \
     git \
     git-lfs \
+    jq \
+    lsb-release \
     unzip \
     wget \
     zstd && \
