@@ -1,0 +1,21 @@
+name: CI
+
+on:
+  push: 
+    branches: [main]
+  pull_request:
+    types: [synchronize, opened, reopened]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+
+      - name: Build
+        uses: docker/build-push-action@f8bc7f46003ef0cf98b715743d86c2f1ccd01436
+        with:
+          context: .
+          push: false
