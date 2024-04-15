@@ -1,3 +1,3 @@
-#  rootless-ubi-arc-runner
+#  rootless-ubuntu-arc-runner
 
-A simple UBI9 based github runner
+A minimal ubuntu based Github runner.

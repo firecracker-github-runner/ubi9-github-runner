@@ -16,6 +16,8 @@ function fetch {
   curl -sSLf -O $url
   tar fxzp ${artifact}.tar.gz -C ${filename_prefix}
   rm ${artifact}.tar.gz
+
+  mv ${filename_prefix}/${filename_prefix} ${BIN_OUT}/${filename_prefix}
 }
 
 fetch "ko-build/ko" "ko"
