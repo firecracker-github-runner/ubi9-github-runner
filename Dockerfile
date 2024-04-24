@@ -55,6 +55,9 @@ RUN useradd -m $USERNAME -u $UID && \
     usermod -aG $GID $USERNAME && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
+    g++ \
+    libfreetype6-dev \
+    zlib1g-dev \
     ca-certificates \
     curl \
     git \
