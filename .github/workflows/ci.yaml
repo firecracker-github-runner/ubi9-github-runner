@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
 
       - name: Build
-        uses: docker/build-push-action@7f1f43ba33ccfd0fa088e0cbf46c7231712fd603
+        uses: docker/build-push-action@eb539f44b153603ccbfbd98e2ab9d4d0dcaf23a4
         with:
           context: .
           push: false
