@@ -1,4 +1,4 @@
-FROM oven/bun:distroless@sha256:a6146b4ede7a80ca704041622cf89b580c65228ad38a89e42eefa2a8511ceced as bun
+FROM oven/bun:distroless@sha256:26948886e65ec4888ea2fee114fb1976343de1c93503085553fdb7951192fa6d as bun
 FROM denoland/deno:bin@sha256:e7c135ff1f3781cf2bbb510f795899b0c24f73458412d0ea61a5416bf9f9ac29 as deno
 FROM golang:latest@sha256:d5302d40dc5fbbf38ec472d1848a9d2391a13f93293a6a5b0b87c99dc0eaa6ae as golang
 FROM ghcr.io/dskiff/tko:bin@sha256:ec369c53b334ee6ff13669bbc443bcc8fcf9447df804c597cb22f00726adee0e as tko
